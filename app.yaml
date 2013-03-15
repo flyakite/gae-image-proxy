@@ -1,0 +1,33 @@
+application: your-app-name
+version: test
+runtime: python27
+api_version: 1
+threadsafe: true
+
+default_expiration: "30d"
+
+skip_files:
+- ^(.*/)?app\.yaml
+- ^(.*/)?app\.yml
+- ^(.*/)?#.*#
+- ^(.*/)?.*~
+- ^(.*/)?.*\.py[co]
+- ^(.*/)?.*/RCS/.*
+- ^(.*/)?\..*
+- ^(.*/)?tests$
+- ^(.*/)?test$
+- ^test/(.*/)?
+- ^README\..*
+- \.gitignore
+- ^\.git/.*
+- \.*\.lint$
+- ^fabfile\.py
+
+builtins:
+- appstats: on #/_ah/stats/
+- remote_api: on #/_ah/remote_api/
+
+handlers:
+
+- url: /.*
+  script: main.app
